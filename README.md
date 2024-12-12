@@ -16,7 +16,7 @@
 
 ساده از استفاده از Tournament Selection به‌عنوان جایگزینی برای Roulette Wheel Selection ارائه میکنیم
 اول تابع select_parents با Tournament Selection جایگزین میکنیم
-‍‍‍```
+```
 def tournament_selection(self, k=3):
     # انتخاب k نمونه تصادفی از جمعیت
     selected = np.random.choice(self.population, k)
@@ -25,13 +25,12 @@ def tournament_selection(self, k=3):
     # بازگشت بهترین دو نمونه بر اساس فیتنس
     parent_indices = np.argsort(fitness)[-2:]  # دو نمونه با بالاترین فیتنس
     return [selected[parent_indices[0]], selected[parent_indices[1]]]
-
 ```
 سپس از tournament_selection به‌جای select_parents استفاده میکنیم
 در حلقه‌ی اصلی کد، تابع انتخاب والدین را جایگزین کنید:
-
+```
 parent1, parent2 = self.tournament_selection()
-
+```
 روش پیشنهادی: Tournament Selection (انتخاب تورنومنت)
 
 در روش انتخاب تورنومنت، به جای استفاده از احتمال برای انتخاب والدین، ابتدا یک گروه کوچک (معمولاً ۳ یا ۴ مسیر تصادفی) از جمعیت انتخاب می‌شود. سپس از بین این مسیرها، بهترین مسیر (کمترین فاصله) به‌عنوان والد انتخاب می‌شود.
